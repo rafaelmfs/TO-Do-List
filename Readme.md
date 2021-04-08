@@ -1,4 +1,4 @@
-Iniciando o projeto:
+### **Iniciando o projeto:**
 
 Com a ideia de um amigo resolvi tentar fazer esse projeto de uma lista de tarefas para praticar códigos JS. 
 Não tenho muito conhecimento sou iniciante na área então não consegui fazer muita coisa mas já de inicio pensei em como queria que ficasse e então decidi que:
@@ -8,7 +8,7 @@ Não tenho muito conhecimento sou iniciante na área então não consegui fazer 
 3. Ao clicar no botão, abrir um modal para exibir todas informações sobre a tarefa, inclusive se foi concluída ou até mesmo marcar como concluída ou apagar essa tarefa.
 4. Ao cadastrar a tarefa ela já venha como pendente automaticamente.
 
-Dificuldades:
+### **Dificuldades:**
 
 Então comecei a fazer os códigos, usei HTML, CSS, JS e botstrap para o modal, tive algumas dificuldades com lógica mas no final consegui fazer a lista porem com alguns probleminhas na logica:
 
