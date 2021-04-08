@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link rel="stylesheet" href="estilo.css">
+        <script src="script.js"></script>
+        
+        <title>Lista de tarefas</title>
+    </head>
+    <body onload="tarefasRecentes(), tarefasConcluidasRecentes()">
+        <header>
+            <ul class="cabecalho">
+                <li>
+                    <a href="#" >Inicio</a>
+                </li>
+                <li>
+                    <a href="listar.html">Listar tarefas</a>
+                </li>
+                <li>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Adicionar tarefas</a>
+                </li>
+            </ul>
+
+        </header>
+        
+        <main class="container">
+            <h2>Tarefas recentes...</h2>
+            <div id="recentes-adc" class="tabelas">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Data</td>
+                            <td>Tipo</td>
+                            <td colspan="2">Resumo da tarefa</td>
+                                                        
+                        </tr>
+                    </thead>
+                    <tbody id="tarefasRecentes">
+                    </tbody>
+            
+                </table>
+            </div>
+            <h2>Tarefas concluídas</h2>
+            <div id="concluidas" class="tabelas">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Data</td>
+                            <td>Tipo</td>
+                            <td colspan="2">Resumo da tarefa</td>
+                        </tr>
+                    </thead>
+                    <tbody id="concluidasRecentes">
+                    </tbody>
+                </table>
+
+            </div>
+
+        </main>
+
+        <!-- Modal Adicionar tarefa -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Cadastrar Tarefa</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Coloque informações sobre sua tarefa</h4>
+                    <form>
+                        <div class="row m-2">
+                            <div class="col-5">Data</div>
+                            <div class="col"><input class="form-control" id="dia" type="text" placeholder="dia"></div>
+                            <div class="col">
+                                <select class="form-control" id="mes">
+                                    <option value="">Mês</option>
+                                    <option value="1">Janeiro</option>
+                                    <option value="2">Fevereiro</option>
+                                    <option value="3">Março</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Maio</option>
+                                    <option value="6">Junho</option>
+                                    <option value="7">Julho</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Setembro</option>
+                                    <option value="10">Outubro</option>
+                                    <option value="11">Novembro</option>
+                                    <option value="12">Dezembro</option>
+                              </select>
+                            </div>
+                            <div class="col">
+                                <select class="form-control" id="ano">
+                                    <option value="">Ano</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                  </select>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <p class="col-3">Tipo</p>
+                            <input class="col form-control p-1" id="tipo" type="text" placeholder="Digite um tipo de tarefa">
+                        </div>
+                        <div class="row m-2">
+                            <p class="col-3">Resumo</p>
+                            <input class="col form-control p-1"  id="resumo" type="text" placeholder="Digite um resumo da sua tarefa">
+                        </div>
+                        <div class="row m-2">
+                            <p>Descrição</p>
+                            <textarea class="form-control" id="descricao" cols="30" rows="10" placeholder="Digite a tarefa"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer m-2">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="adicionarTarefa()">Salvar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        
+        <!-- Modal Detalhes-->
+        <div class="modal fade" id="modalDetalhes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="tituloModal"></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="window.location.reload()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex p-3">
+                        <h5>Data:</h5><p id="dataModal"></p>
+                    </div>
+                    <div class="d-flex p-3">
+                        <h5>Tipo: </h5><p id="tipoModal"></p>
+                    </div>
+                    <div class="p-3">
+                        <h5>Descrição: </h5><p id="descricaoModal"></p>
+                        <div id="descricao"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="p-3">
+                            <button class="btn btn-success concluida" id="concluida" onclick="concluidas(this)">Concluída</button>
+                        </div>
+                        <div class="p-3">
+                            <button class="btn btn-danger apagar" id="apagar" onclick="bd.remover(this)">Apagar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="window.location.reload()">Ok</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>Feito por Rafael Marques, utilizando imagens, fontes do google e bootstrap</p>
+                <div class="redes-sociais">
+                    <a href="https://www.linkedin.com/in/rafael-marques-62510b13b/" target="_blank">
+                        <img src="imagens/LinkedIn.png" alt="">
+                    </a>
+                    <a href="https://www.instagram.com/rafiss.bk/" target="_blank">
+                        <img src="imagens/insta.png" alt="">
+                    </a>
+                    
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        
+    </body>
+</html>
