@@ -174,7 +174,7 @@ function tarefasConcluidasRecentes(){
     let tarefas = [];
     
     for(let x of listaTarefas){
-        if(tarefas.length<3 && x.pendente==false){
+        if(tarefas.length<3 && x.pendente==0){
             tarefas.push(x);
             
         }
