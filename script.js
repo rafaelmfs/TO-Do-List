@@ -161,7 +161,7 @@ function tarefasRecentes(){
     const listaTarefas = bd.recuperarRegistros().reverse();
 
     for(let x of listaTarefas){
-        if(tarefas.length<3){
+        if(tarefas.length<3 && x.pendente == 1){
             tarefas.push(x);
         }
     }
